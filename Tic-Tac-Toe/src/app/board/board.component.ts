@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  squares: any[] | undefined
+  squares!: any[];
   xIsNext: boolean | undefined
   winner: string | undefined
 
@@ -26,6 +26,18 @@ export class BoardComponent implements OnInit {
 
   get player() {
     return this.xIsNext ? 'O' : 'X';
+  }
+
+  makeMove(idx: number) {
+    if (!this.squares[idx]) {
+      this.squares?.splice(idx, 1, this.player)
+      this.xIsNext = !this.xIsNext
+    }
+    this.winner = this.calulateWinner() {
+      const lines = [
+        [0, 1, 2]
+      ]
+    }
   }
 
 }
